@@ -1,0 +1,112 @@
+﻿@model WebApplication4.Models.Customer
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+@using (Html.BeginForm("SignUp","Authentication"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+
+        <div class="wrapper">
+            <div class="d-flex align-items-center justify-content-center my-5 my-lg-0">
+                <div class="container">
+                    <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-2">
+                        <div class="col mx-auto">
+                            <div class="my-4 text-center">
+                                <img src="assets/images/logo-img.png" width="180" alt="" />
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="border p-4 rounded">
+                                        <div class="text-center">
+                                            <h3 class="">Sign Up</h3>
+                                            <p>
+                                                Already have an account? <a href="authentication-signin.html">Sign in here</a>
+                                            </p>
+                                        </div>
+
+                                        <div class="form-body">
+                                            <div class="row g-3">
+                                               
+                                                    <div class="col-sm-6">
+                                                        <label for="inputFirstName" class="form-label">First Name</label>
+                                                        @Html.EditorFor(model => model.firstName, new { htmlAttributes = new { @class = "form-control", @id = "inputFirstName" } })
+                                                        @Html.ValidationMessageFor(model => model.firstName, "", new { @class = "text-danger" })
+
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <label for="inputLastName" class="form-label">Last Name</label>
+
+                                                        @Html.EditorFor(model => model.lastName, new { htmlAttributes = new { @class = "form-control", @id = "inputLastName" } })
+                                                        @Html.ValidationMessageFor(model => model.lastName, "", new { @class = "text-danger" })
+                                                    </div>
+                                            
+                                                <div class="col-12">
+                                                    <label for="inputEmailAddress" class="form-label">Email Address</label>
+                                                    @Html.EditorFor(model => model.emailAddress, new { htmlAttributes = new { @class = "form-control", @id = "inputEmailAddress" } })
+                                                    @Html.ValidationMessageFor(model => model.emailAddress, "", new { @class = "text-danger" })
+
+                                                </div>
+                                                <div class="col-12">
+                                                    <label for="inputChoosePassword" class="form-label">Password</label>
+                                                    <div class="">
+                                                        @Html.PasswordFor(model => model.password, new { @class = "form-control", @id = "inputChoosePassword" })
+                                                        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <label for="inputSelectCountry" class="form-label">Country</label>
+                                                    <select class="form-select" id="inputSelectCountry" aria-label="Default select example" name="country">
+                                                        <option selected>India</option>
+                                                        <option value="1">United Kingdom</option>
+                                                        <option value="2">America</option>
+                                                        <option value="3">Dubai</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-check form-switch">
+
+                                                        @Html.CheckBoxFor(model => model.AcceptsTerms, new { @class = "form-check-input", @id = "flexSwitchCheckChecked" })
+
+
+                                                        <label class="form-check-label" for="flexSwitchCheckChecked">I read and agree to Terms & Conditions</label>
+                                                        <p> @Html.ValidationMessageFor(model => model.AcceptsTerms, "", new { @class = "text-danger" })</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="d-grid">
+                                                        <button type="submit" class="btn btn-primary"><i class='bx bx-user'></i>Sign up</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end row-->
+                </div>
+            </div>
+        </div>
+        <hr />
+
+
+
+
+
+       
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
